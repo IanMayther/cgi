@@ -4,6 +4,16 @@ import cgitb
 
 cgitb.enable()
 
+form = cgi.FieldStorage()
+listval = form.getlist('operand')
+total = 0
+
+try:
+    for item in listval:
+        total += int(item)
+except ValueError:
+    total = 0
+
 print("Content-type: text/plain")
 print()
-print("Your job is to make this work")
+print(str(total))
